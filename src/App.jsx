@@ -1,17 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Navbar from "./components/Navbar";
+import Home from "./pages/Home/Home";
 import Inscription from "./pages/Inscription";
 import Connexion from "./pages/Connexion";
 import MotDePasseOublie from "./pages/MotDePasseOublie";
 import ReinitialiserMotDePasse from "./pages/ReinitialiserMotDePasse";
 import VerificationOtp from "./pages/VerificationOtp";
-// ...
 
 function App() {
     return (
         <BrowserRouter>
-            <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/inscription" element={<Inscription />} />
