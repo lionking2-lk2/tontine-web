@@ -7,4 +7,13 @@ const api = axios.create({
     },
 });
 
+// Ajoute automatiquement le token DRF sur chaque requête, s'il existe
+api.interceptors.request.use((config) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+        config.headers.Authorization = `Token ${token}`;
+    }
+    return config;
+});
+
 export default api;
