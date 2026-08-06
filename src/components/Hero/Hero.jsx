@@ -1,5 +1,6 @@
 import "./Hero.css";
 import HeroIllustration from "./HeroIllustration";
+import { Link } from "react-router-dom";
 function Hero() {
 
     return (
@@ -32,11 +33,9 @@ function Hero() {
 
                     </button>
 
-                    <button className="secondary">
-
+                    <Link to="/connexion" className="secondary">
                         Créer un compte
-
-                    </button>
+                    </Link>
 
                 </div>
 
