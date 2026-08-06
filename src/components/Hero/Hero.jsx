@@ -27,13 +27,11 @@ function Hero() {
 
                 <div className="hero-buttons">
 
-                    <button className="primary">
-
+                    <Link to="/connexion" className="primary">
                         Se connecter
+                    </Link>
 
-                    </button>
-
-                    <Link to="/connexion" className="secondary">
+                    <Link to="/inscription" className="secondary">
                         Créer un compte
                     </Link>
 
