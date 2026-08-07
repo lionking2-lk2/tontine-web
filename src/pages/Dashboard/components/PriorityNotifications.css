@@ -1,0 +1,80 @@
+.priority-notifications {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.08);
+    margin-bottom: 35px;
+}
+
+.priority-notifications h2 {
+    margin-bottom: 20px;
+}
+
+.notification-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.notification-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff8e1;
+    border-left: 5px solid #f59e0b;
+    padding: 18px;
+    border-radius: 12px;
+}
+
+.notification-icon {
+    font-size: 24px;
+}
+
+.notification-content {
+    flex: 1;
+    margin-left: 15px;
+}
+
+.notification-content h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.notification-content span {
+    color: #666;
+    font-size: 14px;
+}
+
+.notification-btn {
+    border: none;
+    background: #2e7d32;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.notification-btn:hover {
+    background: #256428;
+}
+
+@media (max-width: 480px) {
+    .priority-notifications {
+        padding: 18px;
+    }
+
+    .notification-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .notification-content {
+        margin-left: 0;
+    }
+
+    .notification-btn {
+        align-self: stretch;
+    }
+}

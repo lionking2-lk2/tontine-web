@@ -1,0 +1,55 @@
+.upcoming-events {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    margin-bottom: 35px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.08);
+}
+
+.upcoming-events h2 {
+    margin-bottom: 20px;
+}
+
+.events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.event-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px;
+    background: #f7f9fc;
+    border-radius: 12px;
+}
+
+.event-time {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    color: #ff9800;
+}
+
+.event-details h4 {
+    margin: 0;
+}
+
+.event-details p {
+    margin-top: 6px;
+    color: #666;
+}
+
+@media (max-width: 480px) {
+    .upcoming-events {
+        padding: 18px;
+    }
+
+    .event-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
