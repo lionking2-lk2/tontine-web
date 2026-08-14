@@ -5,6 +5,8 @@ import Connexion from "./pages/Connexion";
 import MotDePasseOublie from "./pages/MotDePasseOublie";
 import ReinitialiserMotDePasse from "./pages/ReinitialiserMotDePasse";
 import VerificationOtp from "./pages/VerificationOtp";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import DashboardLayout from "./layouts/DashboardLayout";
 
 function App() {
     return (
@@ -16,6 +18,10 @@ function App() {
                 <Route path="/mot-de-passe-oublie" element={<MotDePasseOublie />} />
                 <Route path="/reinitialiser-mot-de-passe" element={<ReinitialiserMotDePasse />} />
                 <Route path="/verification-otp" element={<VerificationOtp />} />
+
+                <Route element={<DashboardLayout />}>
+                    <Route path="/dashboard" element={<Dashboard />} />
+                </Route>
             </Routes>
         </BrowserRouter>
     );

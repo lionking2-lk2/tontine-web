@@ -7,12 +7,29 @@ const api = axios.create({
     },
 });
 
-// Ajoute automatiquement le token DRF sur chaque requête, s'il existe
+// Ajoute automatiquement le token uniquement
+// aux requêtes qui nécessitent une authentification
 api.interceptors.request.use((config) => {
-    const token = localStorage.getItem("token");
-    if (token) {
-        config.headers.Authorization = `Token ${token}`;
+    const publicRoutes = [
+        "/users/register/",
+        "/users/login-metier/",
+        "/users/verify-otp/",
+        "/users/forgot-password/",
+        "/users/reset-password/",
+    ];
+
+    const isPublicRoute = publicRoutes.some(
+        (route) => config.url?.endsWith(route)
+    );
+
+    if (!isPublicRoute) {
+        const token = localStorage.getItem("token");
+
+        if (token) {
+            config.headers.Authorization = `Token ${token}`;
+        }
     }
+
     return config;
 });
 
