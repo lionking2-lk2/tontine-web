@@ -16,19 +16,23 @@ const events = [
 const UpcomingEvents = () => {
   return (
     <section className="upcoming-events">
-      <h2>📅 Échéances importantes</h2>
+      <div className="section-header">
+        <h2>📅 Échéances importantes</h2>
+      </div>
 
       <div className="events-list">
         {events.map((event, index) => (
           <div className="event-card" key={index}>
             <div className="event-time">
-              ⏰
+              <span className="event-icon">⏰</span>
               <span>{event.remaining}</span>
             </div>
 
             <div className="event-details">
               <h4>{event.group}</h4>
-              <p>Cotisation : {event.contribution}</p>
+              <p>
+                Cotisation : <strong>{event.contribution}</strong>
+              </p>
             </div>
           </div>
         ))}

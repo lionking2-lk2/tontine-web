@@ -39,6 +39,7 @@ function Inscription() {
             await register({ username, email, phone, password });
 
             sessionStorage.setItem("otpUsername", username);
+            localStorage.setItem("username", username);
 
             setMessage("Compte créé. Redirection vers la vérification...");
             setIsError(false);

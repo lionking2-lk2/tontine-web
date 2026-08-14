@@ -17,17 +17,37 @@
     z-index: 1050;
 }
 
-.logo{
-
-    text-align:center;
-    margin-bottom:50px;
-
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 5px;
+    margin-bottom: 50px;
 }
 
-.logo h2{
+.logo img {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
 
-    color:#22C55E;
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
 
+.logo-text h2 {
+    margin: 0;
+    color: var(--vert);
+    font-size: 19px;
+}
+
+.logo-text span {
+    margin-top: 3px;
+    color: #94a3b8;
+    font-size: 12px;
 }
 
 .sidebar nav{
@@ -66,11 +86,9 @@
 }
 
 .sidebar nav a.active {
-
-    background: #22C55E;
+    background: var(--vert);
     color: white;
     font-weight: 600;
-
 }
 
 .logout-btn{

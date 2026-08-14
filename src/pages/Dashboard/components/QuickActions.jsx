@@ -7,7 +7,7 @@ const actions = [
   },
   {
     title: "Rejoindre une tontine",
-    icon: "📨",
+    icon: "👥",
   },
   {
     title: "Payer une cotisation",
@@ -18,13 +18,21 @@ const actions = [
 const QuickActions = () => {
   return (
     <section className="quick-actions">
-      <h2>⚡ Actions rapides</h2>
+      <div className="section-header">
+        <h2>⚡ Actions rapides</h2>
+      </div>
 
       <div className="actions-grid">
         {actions.map((action, index) => (
           <button className="action-card" key={index}>
-            <span>{action.icon}</span>
-            <p>{action.title}</p>
+            <div className="action-icon">
+              {action.icon}
+            </div>
+
+            <div className="action-content">
+              <h3>{action.title}</h3>
+              <span>Accéder</span>
+            </div>
           </button>
         ))}
       </div>

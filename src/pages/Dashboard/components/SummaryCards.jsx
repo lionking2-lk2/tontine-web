@@ -12,11 +12,6 @@ const cards = [
     icon: "💰",
   },
   {
-    title: "Invitations",
-    value: 1,
-    icon: "📨",
-  },
-  {
     title: "Notifications",
     value: 5,
     icon: "🔔",
@@ -28,7 +23,9 @@ const SummaryCards = () => {
     <section className="summary-cards">
       {cards.map((card, index) => (
         <div className="summary-card" key={index}>
-          <div className="card-icon">{card.icon}</div>
+          <div className="card-icon">
+            {card.icon}
+          </div>
 
           <div className="card-content">
             <h3>{card.value}</h3>

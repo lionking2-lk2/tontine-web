@@ -1,0 +1,67 @@
+.dashboard-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 20px 35px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+  width: 100%;
+}
+
+.topbar-left h2 {
+  margin: 0;
+  font-size: 22px;
+  color: #1E293B;
+}
+
+.topbar-date {
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.topbar-notification-btn {
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  background: #f2f4f8;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: .3s;
+}
+
+.topbar-notification-btn:hover {
+  background: #e5e7eb;
+}
+
+.topbar-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #1E293B;
+  font-weight: 600;
+}
+
+.topbar-profile svg {
+  color: var(--vert);
+}
+
+@media (max-width: 768px) {
+  .dashboard-topbar {
+    padding: 16px 20px;
+  }
+
+  .topbar-profile span {
+    display: none;
+  }
+}

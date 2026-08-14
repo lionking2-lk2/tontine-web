@@ -5,7 +5,6 @@ import {
   FaHome,
   FaUsers,
   FaWallet,
-  FaEnvelope,
   FaBell,
   FaUser,
   FaCog,
@@ -29,8 +28,12 @@ const Sidebar = () => {
 
       <aside className={`sidebar ${open ? "open" : ""}`}>
         <div className="logo">
-          <h2>Trois Clés</h2>
-        </div>
+  <img src="/Logo_3Keys.jpeg" alt="Logo Trois Clés" />
+  <div className="logo-text">
+    <h2>Trois Clés</h2>
+    <span>Gestion intelligente</span>
+  </div>
+</div>
         <nav onClick={closeSidebar}>
           <NavLink to="/dashboard">
             <FaHome />
@@ -55,10 +58,6 @@ const Sidebar = () => {
           <NavLink to="/settings">
             <FaCog />
             <span>Paramètres</span>
-          </NavLink>
-          <NavLink to="/invitations">
-            <FaEnvelope />
-            <span>Invitations</span>
           </NavLink>
         </nav>
         <button className="logout-btn">
