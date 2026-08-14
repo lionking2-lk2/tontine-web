@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { KeyRound, User, Phone, Mail, Lock, Eye, EyeOff, UserPlus } from "lucide-react";
 import { register } from "../services/authService";
-
+import api from "../api/axios";
 function Inscription() {
     const navigate = useNavigate();
 
@@ -36,19 +36,28 @@ function Inscription() {
         setLoading(true);
 
         try {
-            await register({ username, email, phone, password });
+            const response = await verifyOtp({
+                username,
+                code,
+                typeCode: "INSCRIPTION",
+             });
 
-            sessionStorage.setItem("otpUsername", username);
-            localStorage.setItem("username", username);
 
-            setMessage("Compte créé. Redirection vers la vérification...");
-            setIsError(false);
+        localStorage.setItem("token", response.data.token);
 
-            setTimeout(() => {
-                navigate("/verification-otp");
-            }, 1000);
+        const meResponse = await api.get("/users/me/");
+        localStorage.setItem("userId", meResponse.data.id);
 
-        } catch (error) {
+        sessionStorage.removeItem("otpUsername");
+
+        setMessage("Compte vérifié avec succès !");
+        setIsError(false);
+
+        setTimeout(() => {
+            navigate("/dashboard");
+        }, 1000);
+
+    } catch (error) {
             const data = error.response?.data;
             let errorMessage = "Impossible de créer le compte.";
 

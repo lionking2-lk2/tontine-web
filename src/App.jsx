@@ -23,7 +23,6 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Connexion />} />
                 <Route path="/inscription" element={<Inscription />} />
                 <Route path="/connexion" element={<Connexion />} />
                 <Route path="/mot-de-passe-oublie" element={<MotDePasseOublie />} />
