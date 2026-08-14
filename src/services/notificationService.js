@@ -5,5 +5,9 @@ export const getNotifications = () => {
 };
 
 export const markAsRead = (id) => {
-    return api.patch(`/notifications/${id}/`, {});
+    return api.patch(`/notifications/${id}/`, { statutLecture: "LUE" });
+};
+
+export const marquerCommeLue = (notifId) => {
+    return api.patch(`/notifications/${notifId}/`, { statutLecture: "LUE" });
 };
