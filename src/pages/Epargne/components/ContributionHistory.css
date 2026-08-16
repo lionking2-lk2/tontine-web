@@ -1,0 +1,109 @@
+.contribution-history {
+  background: white;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.section-header h2 {
+  margin: 0 0 6px;
+  color: #1e293b;
+  font-size: 20px;
+}
+
+.section-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.view-all-btn {
+  border: none;
+  background: transparent;
+  color: var(--primary-green);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.view-all-btn:hover {
+  text-decoration: underline;
+}
+
+.contribution-table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.contribution-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.contribution-table th {
+  text-align: left;
+  padding: 14px 10px;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 600;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.contribution-table td {
+  padding: 17px 10px;
+  color: #475569;
+  font-size: 14px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.contribution-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.tontine-name {
+  color: #1e293b !important;
+  font-weight: 600;
+}
+
+.contribution-amount {
+  color: var(--primary-green) !important;
+  font-weight: 600;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status.validated {
+  background: var(--primary-green-light);
+  color: var(--primary-green-dark);
+}
+
+.status.pending {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+@media (max-width: 600px) {
+  .contribution-history {
+    padding: 18px;
+  }
+
+  .section-header {
+    align-items: flex-start;
+    gap: 15px;
+  }
+}

@@ -1,0 +1,48 @@
+:root {
+  --primary-green: #16a34a;
+  --primary-green-dark: #15803d;
+  --primary-green-light: #dcfce7;
+}
+
+.epargne-content {
+  width: 100%;
+  min-height: 100vh;
+  padding: 35px;
+  background: #f1f5f9;
+  box-sizing: border-box;
+}
+
+.epargne-title {
+  margin-bottom: 30px;
+}
+
+.epargne-title h1 {
+  margin: 0 0 8px;
+  font-size: 30px;
+  color: #1e293b;
+}
+
+.epargne-title p {
+  margin: 0;
+  color: #64748b;
+  font-size: 16px;
+}
+
+.epargne-bottom {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 25px;
+  margin-top: 25px;
+}
+
+@media (max-width: 1000px) {
+  .epargne-bottom {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .epargne-content {
+    padding: 20px;
+  }
+}
