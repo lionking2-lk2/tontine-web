@@ -107,3 +107,10 @@
     gap: 15px;
   }
 }
+
+.contribution-status {
+    color: #888;
+    font-size: 14px;
+    text-align: center;
+    padding: 15px 0;
+}
