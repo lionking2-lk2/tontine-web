@@ -8,6 +8,7 @@ import VerificationOtp from "./pages/VerificationOtp";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import DashboardLayout from "./layouts/DashboardLayout";
 import Epargne from "./pages/Epargne/Epargne";
+import Profile from "./pages/Profile/Profile";
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                 <Route element={<DashboardLayout />}>
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/epargne" element={<Epargne />} />
+                    <Route path="/profile" element={<Profile />} />
                 </Route>
             </Routes>
         </BrowserRouter>

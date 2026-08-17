@@ -11,13 +11,18 @@ export const UserProvider = ({ children }) => {
         const fetchUser = async () => {
             try {
                 const response = await getMe();
-                setUser(response.data);
+
+console.log("USER REÇU PAR CONTEXT :", response.data);
+
+setUser(response.data);
             } catch (error) {
+                console.error("Erreur récupération profil :", error);
                 setUser(null);
             } finally {
                 setLoading(false);
             }
         };
+
         fetchUser();
     }, []);
 
