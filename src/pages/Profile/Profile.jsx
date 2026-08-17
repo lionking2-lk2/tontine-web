@@ -127,7 +127,16 @@ useEffect(() => {
       setFichierJustificatif(null);
 
       const response = await getMe();
-      setUser(response.data);
+setUser(response.data);
+
+const kycResponse = await getKyc();
+const documents = kycResponse.data || [];
+
+if (documents.length > 0) {
+  setKycStatus(documents[0].statutValidation);
+} else {
+  setKycStatus(null);
+}
     } catch (error) {
       const responseData = error?.response?.data;
 
