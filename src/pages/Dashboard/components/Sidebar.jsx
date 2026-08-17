@@ -39,7 +39,7 @@ const Sidebar = () => {
             <FaHome />
             <span>Tableau de bord</span>
           </NavLink>
-          <NavLink to="/groups">
+          <NavLink to="/tontines">
             <FaUsers />
             <span>Mes tontines</span>
           </NavLink>

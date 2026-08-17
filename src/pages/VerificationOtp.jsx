@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { MailCheck } from "lucide-react";
 import { verifyOtp } from "../services/authService";
-
+import api from "../api/axios";
 function VerificationOtp() {
     const navigate = useNavigate();
 
@@ -28,21 +28,27 @@ function VerificationOtp() {
         setLoading(true);
 
         try {
-            const response = await verifyOtp({
-                username,
-                code,
-                typeCode: "INSCRIPTION",
-            });
+        const response = await verifyOtp({
+            username,
+            code,
+            typeCode: "INSCRIPTION",
+        });
 
-            localStorage.setItem("token", response.data.token);
-            sessionStorage.removeItem("otpUsername");
+        localStorage.setItem("token", response.data.token);
 
-            setMessage("Compte vérifié avec succès !");
-            setIsError(false);
+        // Récupère l'id et le username pour les besoins du frontend
+        const meResponse = await api.get("/users/me/");
+        localStorage.setItem("userId", meResponse.data.id);
+        localStorage.setItem("username", meResponse.data.username);
 
-            setTimeout(() => {
-                navigate("/dashboard");
-            }, 1000);
+        sessionStorage.removeItem("otpUsername");
+
+        setMessage("Compte vérifié avec succès !");
+        setIsError(false);
+
+        setTimeout(() => {
+            navigate("/dashboard");
+        }, 1000);
 
         } catch (error) {
             const data = error.response?.data;
