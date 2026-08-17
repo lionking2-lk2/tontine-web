@@ -1,6 +1,5 @@
 import "./DashboardHeader.css";
-import { useUser } from "../../../context/UserContext";
-
+import { useUser } from "../../../context/useUser.js";
 const DashboardHeader = () => {
   const { user } = useUser();
 

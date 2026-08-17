@@ -1,7 +1,6 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getMe } from "../services/userService";
-
-const UserContext = createContext(null);
+import { UserContext } from "./userContext";
 
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
@@ -11,10 +10,7 @@ export const UserProvider = ({ children }) => {
         const fetchUser = async () => {
             try {
                 const response = await getMe();
-
-console.log("USER REÇU PAR CONTEXT :", response.data);
-
-setUser(response.data);
+                setUser(response.data);
             } catch (error) {
                 console.error("Erreur récupération profil :", error);
                 setUser(null);
@@ -32,5 +28,3 @@ setUser(response.data);
         </UserContext.Provider>
     );
 };
-
-export const useUser = () => useContext(UserContext);

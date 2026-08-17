@@ -1,18 +1,24 @@
-import { useEffect, useState } from "react";import {
+import { useEffect, useState } from "react";
+import {
   FaUser,
   FaEnvelope,
   FaPhone,
   FaCheckCircle,
   FaShieldAlt,
 } from "react-icons/fa";
-import { useUser } from "../../context/UserContext";
-import { getMe, submitKyc, getKyc } from "../../services/userService";import "./Profile.css";
+import { useUser } from "../../context/useUser";
+import { submitKyc, getKyc } from "../../services/userService";
+import { useSearchParams } from "react-router-dom";
+import "./Profile.css";
 
 const Profile = () => {
-  const { user: initialUser, loading } = useUser();
+  const { user, loading } = useUser();
 
-  const [user, setUser] = useState(initialUser);
-  const [showKycForm, setShowKycForm] = useState(false);
+const [searchParams] = useSearchParams();
+
+const [showKycForm, setShowKycForm] = useState(
+  () => searchParams.get("kyc") === "required"
+);
 
   const [typePiece, setTypePiece] = useState("");
   const [fichierPiece, setFichierPiece] = useState(null);
@@ -25,9 +31,7 @@ const Profile = () => {
   const [kycStatus, setKycStatus] = useState(null);
   const [kycError, setKycError] = useState("");
 
-  useEffect(() => {
-    setUser(initialUser);
-}, [initialUser]);
+ 
 
 useEffect(() => {
   const fetchKycStatus = async () => {
@@ -49,6 +53,8 @@ useEffect(() => {
 
   fetchKycStatus();
 }, []);
+
+
 
   if (loading) {
     return (
@@ -126,8 +132,7 @@ useEffect(() => {
       setTypeJustificatifDomicile("");
       setFichierJustificatif(null);
 
-      const response = await getMe();
-setUser(response.data);
+     
 
 const kycResponse = await getKyc();
 const documents = kycResponse.data || [];

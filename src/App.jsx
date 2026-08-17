@@ -9,6 +9,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import DashboardLayout from "./layouts/DashboardLayout";
 import Epargne from "./pages/Epargne/Epargne";
 import Profile from "./pages/Profile/Profile";
+import CreerTontine from "./pages/CreerTontine/CreerTontine";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/epargne" element={<Epargne />} />
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/tontines/creer" element={<CreerTontine />} />
                 </Route>
             </Routes>
         </BrowserRouter>

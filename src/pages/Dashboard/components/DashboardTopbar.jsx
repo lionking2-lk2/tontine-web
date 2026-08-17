@@ -1,7 +1,6 @@
 import "./DashboardTopbar.css";
 import { FaBell, FaUserCircle } from "react-icons/fa";
-import { useUser } from "../../../context/UserContext";
-
+import { useUser } from "../../../context/useUser.js";
 const DashboardTopbar = ({ pageTitle = "Tableau de bord" }) => {
   const { user } = useUser();
 
