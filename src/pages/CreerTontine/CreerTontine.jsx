@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { RefreshCw, PiggyBank, X, Check } from "lucide-react";
+import { Navigate, useNavigate } from "react-router-dom";import { RefreshCw, PiggyBank, X, Check } from "lucide-react";
 import { creerGroupe, configurerRotative, configurerEpargneCredit } from "../../services/groupeService";
 import { useUser } from "../../context/useUser.js";
 function CreerTontine() {
@@ -26,6 +25,14 @@ function CreerTontine() {
 
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+
+    if (userLoading) {
+    return null;
+}
+
+if (!user?.a_kyc_valide) {
+    return <Navigate to="/profile?kyc=required" replace />;
+}
 
     const allerEtape2 = (event) => {
         event.preventDefault();
