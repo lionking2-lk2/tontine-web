@@ -1,0 +1,92 @@
+.group-balances {
+  margin-top: 25px;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+}
+
+.group-balances-header {
+  margin-bottom: 20px;
+}
+
+.group-balances-header h2 {
+  margin: 0 0 6px;
+  font-size: 22px;
+  color: #1e293b;
+}
+
+.group-balances-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.group-balances-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.group-balance-card {
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+.group-balance-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.group-balance-header h3 {
+  margin: 0;
+  color: #1e293b;
+  font-size: 18px;
+}
+
+.group-manager-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: var(--primary-green-light);
+  color: var(--primary-green-dark);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.group-balance-details {
+  display: grid;
+  gap: 12px;
+}
+
+.group-balance-details div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.group-balance-details span {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.group-balance-details strong {
+  color: #1e293b;
+  font-size: 15px;
+}
+
+.group-balances-status {
+  margin: 0;
+  color: #64748b;
+}
+
+@media (max-width: 700px) {
+  .group-balances-list {
+    grid-template-columns: 1fr;
+  }
+}

@@ -2,7 +2,7 @@ import "./Epargne.css";
 
 import EpargneSummary from "./components/EpargneSummary";
 import ContributionHistory from "./components/ContributionHistory";
-import NextContribution from "./components/NextContribution";
+import GroupBalances from "./components/GroupBalances";
 
 const Epargne = () => {
   return (
@@ -11,15 +11,15 @@ const Epargne = () => {
       <div className="epargne-title">
         <h1>Mon épargne</h1>
         <p>
-          Consultez votre épargne, vos cotisations et vos prochaines échéances.
-        </p>
+  Consultez votre épargne et vos cotisations.
+</p>
       </div>
 
       <EpargneSummary />
+      <GroupBalances />
 
       <div className="epargne-bottom">
         <ContributionHistory />
-        <NextContribution />
       </div>
 
     </main>

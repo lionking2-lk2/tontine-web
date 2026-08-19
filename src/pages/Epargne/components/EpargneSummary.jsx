@@ -1,36 +1,81 @@
+import { useEffect, useState } from "react";
 import "./EpargneSummary.css";
 
 import {
   FaWallet,
   FaMoneyBillWave,
-  FaCalendarCheck,
   FaHandHoldingUsd,
 } from "react-icons/fa";
-
-const summaryCards = [
-  {
-    title: "Solde disponible",
-    value: "125 000 FCFA",
-    icon: <FaWallet />,
-  },
-  {
-    title: "Total cotisé",
-    value: "300 000 FCFA",
-    icon: <FaMoneyBillWave />,
-  },
-  {
-    title: "Cotisations",
-    value: "15",
-    icon: <FaCalendarCheck />,
-  },
-  {
-    title: "Prêts en cours",
-    value: "1",
-    icon: <FaHandHoldingUsd />,
-  },
-];
+import { getMesGroupesEtSoldes } from "../../../services/groupeService";
 
 const EpargneSummary = () => {
+  const [summaryCards, setSummaryCards] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const groupesRes = await getMesGroupesEtSoldes();
+
+      const groupes = groupesRes.data;
+
+      const totalSoldeDisponible = groupes.reduce(
+        (sum, g) => sum + parseFloat(g.solde.soldeDisponible || 0),
+        0
+      );
+
+      const totalCotise = groupes.reduce(
+        (sum, g) => sum + parseFloat(g.solde.totalCotise || 0),
+        0
+      );
+
+      const pretsEnCours = groupes.reduce(
+        (sum, g) => sum + (g.solde.pretsEnCours?.length || 0),
+        0
+      );
+
+      setSummaryCards([
+        {
+          title: "Solde disponible",
+          value: `${totalSoldeDisponible.toLocaleString("fr-FR")} FCFA`,
+          icon: <FaWallet />,
+        },
+        {
+          title: "Total cotisé",
+          value: `${totalCotise.toLocaleString("fr-FR")} FCFA`,
+          icon: <FaMoneyBillWave />,
+        },
+        {
+          title: "Prêts en cours",
+          value: pretsEnCours,
+          icon: <FaHandHoldingUsd />,
+        },
+      ]);
+    } catch (error) {
+      console.log("========== ERREUR EPARGNE ==========");
+      console.log("URL :", error.config?.url);
+      console.log("METHOD :", error.config?.method);
+      console.log("STATUS :", error.response?.status);
+      console.log("DATA :", error.response?.data);
+      console.log("====================================");
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchData();
+}, []);
+
+  if (loading) {
+    return <section className="epargne-summary"><p className="epargne-status">Chargement...</p></section>;
+  }
+
+  if (error) {
+    return <section className="epargne-summary"><p className="epargne-status">Impossible de charger vos données.</p></section>;
+  }
+
   return (
     <section className="epargne-summary">
       {summaryCards.map((card, index) => (
