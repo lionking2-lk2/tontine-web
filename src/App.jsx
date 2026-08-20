@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import Home from "./pages/Home/Home";
 import Inscription from "./pages/Inscription";
 import Connexion from "./pages/Connexion";
 import MotDePasseOublie from "./pages/MotDePasseOublie";
@@ -19,6 +20,7 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
+                <Route path="/" element={<Home />} />
                 <Route path="/inscription" element={<Inscription />} />
                 <Route path="/connexion" element={<Connexion />} />
                 <Route path="/mot-de-passe-oublie" element={<MotDePasseOublie />} />

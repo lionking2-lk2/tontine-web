@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { LogIn, User, Lock, Eye, EyeOff } from "lucide-react";
 import { login } from "../services/authService";
-import api from "../api/axios";
+
 function Connexion() {
     const navigate = useNavigate();
 
@@ -23,11 +23,6 @@ function Connexion() {
             const response = await login({ identifiant, motDePasse });
 
             localStorage.setItem("token", response.data.token);
-
-    // Récupère l'id et le username pour les besoins du frontend (ex: Mes tontines, Détail tontine)
-            const meResponse = await api.get("/users/me/");
-            localStorage.setItem("userId", meResponse.data.id);
-            localStorage.setItem("username", meResponse.data.username);
 
             setMessage("Connexion réussie !");
             setIsError(false);
