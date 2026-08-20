@@ -11,8 +11,8 @@ const Epargne = () => {
       <div className="epargne-title">
         <h1>Mon épargne</h1>
         <p>
-  Consultez votre épargne et vos cotisations.
-</p>
+          Consultez votre épargne et vos cotisations.
+        </p>
       </div>
 
       <EpargneSummary />
