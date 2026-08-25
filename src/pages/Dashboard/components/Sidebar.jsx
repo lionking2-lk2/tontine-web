@@ -11,6 +11,8 @@ import {
   FaSignOutAlt,
   FaBars,
   FaTimes,
+  FaHistory,
+  FaCreditCard,
 } from "react-icons/fa";
 
 const Sidebar = () => {
@@ -51,11 +53,19 @@ const Sidebar = () => {
             <FaBell />
             <span>Notifications</span>
           </NavLink>
+          <NavLink to="/historique">
+            <FaHistory />
+            <span>Historique</span>
+          </NavLink>
+          <NavLink to="/gestion-prets">
+            <FaCreditCard />
+            <span>Gestion des prêts</span>
+          </NavLink>
           <NavLink to="/profile">
             <FaUser />
             <span>Profil</span>
           </NavLink>
-          <NavLink to="/settings">
+          <NavLink to="/parametres">
             <FaCog />
             <span>Paramètres</span>
           </NavLink>

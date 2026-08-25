@@ -1613,3 +1613,186 @@ button {
   gap: 10px;
   margin-top: 8px;
 }
+/* --- Cotiser : trigger --- */
+.ct-trigger {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 16px 18px;
+    margin-top: 14px;
+    background: #16a34a;
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.15s ease, transform 0.1s ease;
+}
+.ct-trigger:hover { background: #15803d; }
+.ct-trigger:active { transform: scale(0.99); }
+.ct-trigger-icon { font-size: 22px; }
+.ct-trigger strong { display: block; font-size: 15px; }
+.ct-trigger small { display: block; opacity: 0.85; font-size: 13px; margin-top: 2px; }
+
+/* --- Modale --- */
+.ct-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 16px;
+}
+.ct-modal {
+    background: #fff;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 420px;
+    padding: 24px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+}
+.ct-modal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 18px;
+}
+.ct-eyebrow {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #16a34a;
+}
+.ct-modal-head h3 { margin: 4px 0 0; font-size: 20px; }
+.ct-close {
+    border: none;
+    background: #f1f5f9;
+    border-radius: 8px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #475569;
+}
+.ct-close:hover { background: #e2e8f0; }
+
+.ct-form { display: flex; flex-direction: column; gap: 6px; }
+.ct-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+    margin-top: 10px;
+    margin-bottom: 6px;
+}
+.ct-amount-input {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 4px 12px;
+}
+.ct-amount-input input {
+    border: none;
+    outline: none;
+    flex: 1;
+    padding: 10px 4px;
+    font-size: 15px;
+}
+.ct-amount-input span { color: #94a3b8; font-size: 13px; font-weight: 600; }
+
+.ct-payment-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 6px;
+}
+.ct-payment-option {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 14px 8px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 13px;
+    color: #334155;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+.ct-payment-option:hover { border-color: #86efac; }
+.ct-payment-option.selected {
+    border-color: #16a34a;
+    background: #f0fdf4;
+    color: #15803d;
+    font-weight: 600;
+}
+.ct-payment-check {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: #16a34a;
+    color: #fff;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ct-erreur { color: #dc2626; font-size: 13px; margin-top: 8px; }
+.ct-empty { font-size: 13px; color: #94a3b8; grid-column: span 2; }
+
+.ct-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 18px;
+}
+.ct-btn-ghost {
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 1.5px solid #e2e8f0;
+    background: #fff;
+    color: #475569;
+    cursor: pointer;
+}
+.ct-btn-ghost:hover { background: #f8fafc; }
+.ct-btn-primary {
+    padding: 10px 18px;
+    border-radius: 10px;
+    border: none;
+    background: #16a34a;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+.ct-btn-primary:hover { background: #15803d; }
+.ct-btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.ct-page-center {
+    display: flex;
+    justify-content: center;
+    padding: 24px 0;
+}
+.ct-modal-static {
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    max-width: 480px;
+}
+.ct-textarea {
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: inherit;
+    resize: vertical;
+    margin-top: 4px;
+}
