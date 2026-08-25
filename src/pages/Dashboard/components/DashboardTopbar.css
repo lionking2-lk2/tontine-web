@@ -50,6 +50,26 @@
   gap: 10px;
   color: #1E293B;
   font-weight: 600;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+.topbar-profile:hover {
+  opacity: 0.85;
+}
+
+.topbar-profile:focus-visible {
+  outline: 2px solid var(--vert);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+.topbar-profile svg {
+  color: var(--vert);
 }
 
 .topbar-profile svg {

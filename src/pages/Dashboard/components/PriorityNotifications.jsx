@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./PriorityNotifications.css";
 import { getNotifications, markAsRead } from "../../../services/notificationService";
 
 const PriorityNotifications = () => {
+  const navigate = useNavigate();
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -26,13 +28,14 @@ const PriorityNotifications = () => {
   }, []);
 
   const handleVoir = async (id) => {
-    try {
-      await markAsRead(id);
-      setNotifications((prev) => prev.filter((n) => n.id !== id));
-    } catch  {
-      // On laisse la notification affichée si le marquage échoue
-    }
-  };
+  try {
+    await markAsRead(id);
+    setNotifications((prev) => prev.filter((n) => n.id !== id));
+    navigate("/notifications");
+  } catch {
+    // On laisse la notification affichée si le marquage échoue
+  }
+};
 
   return (
     <section className="priority-notifications">

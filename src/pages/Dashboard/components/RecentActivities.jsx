@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./RecentActivities.css";
 import { getHistorique } from "../../../services/loanService";
 
@@ -19,6 +20,7 @@ const formatDate = (dateString) => {
 };
 
 const RecentActivities = () => {
+  const navigate = useNavigate();
   const [activities, setActivities] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -45,7 +47,12 @@ const RecentActivities = () => {
     <section className="recent-activities">
       <div className="section-header">
         <h2>🕒 Activités récentes</h2>
-        <button className="see-all-btn">Voir tout</button>
+        <button
+  className="see-all-btn"
+  onClick={() => navigate("/historique")}
+>
+  Voir tout
+</button>
       </div>
 
       {loading && <p className="activities-status">Chargement...</p>}

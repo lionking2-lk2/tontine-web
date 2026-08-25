@@ -1,6 +1,8 @@
 import "./DashboardHeader.css";
 import { useUser } from "../../../context/useUser.js";
+import { useNavigate } from "react-router-dom";
 const DashboardHeader = () => {
+  const navigate = useNavigate();
   const { user } = useUser();
 
   const today = new Date();
@@ -24,11 +26,12 @@ const DashboardHeader = () => {
       </div>
       <div className="header-right">
         <button
-          className="notification-btn"
-          aria-label="Notifications"
-        >
-          🔔
-        </button>
+  className="notification-btn"
+  aria-label="Notifications"
+  onClick={() => navigate("/notifications")}
+>
+  🔔
+</button>
       </div>
     </header>
   );
