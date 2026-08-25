@@ -22,8 +22,17 @@ export const UserProvider = ({ children }) => {
         fetchUser();
     }, []);
 
+    const logout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("userId");
+        localStorage.removeItem("username");
+        sessionStorage.removeItem("otpUsername");
+
+        setUser(null);
+    };
+
     return (
-        <UserContext.Provider value={{ user, loading }}>
+        <UserContext.Provider value={{ user, loading, logout }}>
             {children}
         </UserContext.Provider>
     );
