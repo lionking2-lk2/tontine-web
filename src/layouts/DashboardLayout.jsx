@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "../pages/Dashboard/components/Sidebar";
 import DashboardTopbar from "../pages/Dashboard/components/DashboardTopbar";
-import { UserProvider } from "../context/UserContext";
+import { UserProvider } from "../context/UserContext.jsx";
 import "../pages/Dashboard/Dashboard.css";
 
 const DashboardLayout = () => {

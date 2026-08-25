@@ -28,6 +28,7 @@ api.interceptors.request.use((config) => {
 
     if (!estRoutePublique) {
         const token = localStorage.getItem("token");
+        console.log("Token utilisé par Axios :", token ? "TOKEN TROUVÉ" : "AUCUN TOKEN");
 
         if (token) {
             config.headers.Authorization = `Token ${token}`;

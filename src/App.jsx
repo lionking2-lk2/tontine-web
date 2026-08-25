@@ -9,6 +9,7 @@ import VerificationOtp from "./pages/VerificationOtp";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import DashboardLayout from "./layouts/DashboardLayout";
 import Epargne from "./pages/Epargne/Epargne";
+import Profile from "./pages/Profile/Profile";
 import MesTontines from "./pages/MesTontines/MesTontines";
 import CreerTontine from "./pages/CreerTontine/CreerTontine";
 import DetailTontine from "./pages/DetailTontine/DetailTontine";
@@ -40,9 +41,11 @@ function App() {
                     <Route path="/tontines/:id/demander-pret" element={<DemanderPret />} />
                     <Route path="/historique" element={<Historique />} />
                     <Route path="/gestion-prets" element={<GestionPrets />} />
+                    <Route path="/profile" element={<Profile />} />
                 </Route>
             </Routes>
         </BrowserRouter>
     );
 }
+
 export default App;

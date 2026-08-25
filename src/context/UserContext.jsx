@@ -1,7 +1,6 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getMe } from "../services/userService";
-
-const UserContext = createContext(null);
+import { UserContext } from "./userContext";
 
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
@@ -13,11 +12,13 @@ export const UserProvider = ({ children }) => {
                 const response = await getMe();
                 setUser(response.data);
             } catch (error) {
+                console.error("Erreur récupération profil :", error);
                 setUser(null);
             } finally {
                 setLoading(false);
             }
         };
+
         fetchUser();
     }, []);
 
@@ -27,5 +28,3 @@ export const UserProvider = ({ children }) => {
         </UserContext.Provider>
     );
 };
-
-export const useUser = () => useContext(UserContext);
