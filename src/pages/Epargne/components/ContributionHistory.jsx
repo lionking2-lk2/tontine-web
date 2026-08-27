@@ -6,6 +6,7 @@ import { getHistorique } from "../../../services/loanService";
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
+
   return date.toLocaleDateString("fr-FR", {
     day: "2-digit",
     month: "2-digit",
@@ -14,43 +15,59 @@ const formatDate = (dateString) => {
 };
 
 const ContributionHistory = () => {
-  const [contributions, setContributions] = useState([]);
+  const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await getHistorique();
+
         const data = Array.isArray(response.data)
           ? response.data
           : response.data.results || [];
-        const cotisations = data.filter((t) => t.type === "Cotisation");
-        setContributions(cotisations);
-      } catch  {
+
+        setTransactions(data);
+      } catch {
         setError(true);
       } finally {
         setLoading(false);
       }
     };
+
     fetchData();
   }, []);
+
+  const displayedTransactions = showAll
+    ? transactions
+    : transactions.slice(0, 5);
 
   return (
     <section className="contribution-history">
 
       <div className="section-header">
         <div>
-          <h2>Historique des cotisations</h2>
-          <p>Consultez vos dernières cotisations.</p>
+          <h2>Historique des transactions</h2>
+          <p>Consultez vos dernières opérations.</p>
         </div>
 
-        <button className="view-all-btn">
-          Voir tout
-        </button>
+        {!loading && !error && transactions.length > 5 && (
+          <button
+            className="view-all-btn"
+            onClick={() => setShowAll(!showAll)}
+          >
+            {showAll ? "Voir moins" : "Voir tout"}
+          </button>
+        )}
       </div>
 
-      {loading && <p className="contribution-status">Chargement...</p>}
+      {loading && (
+        <p className="contribution-status">
+          Chargement...
+        </p>
+      )}
 
       {!loading && error && (
         <p className="contribution-status">
@@ -58,16 +75,19 @@ const ContributionHistory = () => {
         </p>
       )}
 
-      {!loading && !error && contributions.length === 0 && (
-        <p className="contribution-status">Aucune cotisation enregistrée.</p>
+      {!loading && !error && transactions.length === 0 && (
+        <p className="contribution-status">
+          Aucune transaction enregistrée.
+        </p>
       )}
 
-      {!loading && !error && contributions.length > 0 && (
+      {!loading && !error && transactions.length > 0 && (
         <div className="contribution-table-container">
           <table className="contribution-table">
             <thead>
               <tr>
                 <th>Date</th>
+                <th>Type</th>
                 <th>Tontine</th>
                 <th>Montant</th>
                 <th>Statut</th>
@@ -75,20 +95,27 @@ const ContributionHistory = () => {
             </thead>
 
             <tbody>
-              {contributions.map((contribution) => (
-                <tr key={contribution.id}>
-                  <td>{formatDate(contribution.dateTransaction)}</td>
+              {displayedTransactions.map((transaction) => (
+                <tr key={transaction.id}>
 
-                  <td className="tontine-name">
-                    {contribution.groupe}
-                  </td>
-
-                  <td className="contribution-amount">
-                    {contribution.montant} FCFA
+                  <td>
+                    {formatDate(transaction.dateTransaction)}
                   </td>
 
                   <td>
-                    {contribution.statut === "REUSSIE" ? (
+                    {transaction.type}
+                  </td>
+
+                  <td className="tontine-name">
+                    {transaction.groupe || "—"}
+                  </td>
+
+                  <td className="contribution-amount">
+                    {transaction.montant} FCFA
+                  </td>
+
+                  <td>
+                    {transaction.statut === "REUSSIE" ? (
                       <span className="status validated">
                         <FaCheckCircle />
                         Validée
@@ -96,10 +123,13 @@ const ContributionHistory = () => {
                     ) : (
                       <span className="status pending">
                         <FaClock />
-                        {contribution.statut === "EN_ATTENTE" ? "En attente" : contribution.statut}
+                        {transaction.statut === "EN_ATTENTE"
+                          ? "En attente"
+                          : transaction.statut || "Inconnu"}
                       </span>
                     )}
                   </td>
+
                 </tr>
               ))}
             </tbody>
